@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: spring-boot-complete
+Implementation-Title: spring-boot-sample
 Implementation-Version: 0.0.1-SNAPSHOT
 Built-By: toomt
 Implementation-Vendor-Id: com.example
