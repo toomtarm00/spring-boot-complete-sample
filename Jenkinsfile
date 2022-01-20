@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withMaven(maven : 'Maven') {
-                    bat'mvn clean compile'
-                }
+                 bat'mvn clean compile'
+
             }
         }
         stage('Test') {
