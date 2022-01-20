@@ -4,7 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 withMaven(maven : 'Maven') {
-                    sh'mvn clean compile'
+                    bat'mvn clean compile'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                withMaven(maven : 'Maven') {
+                    bat'mvn test'
                 }
             }
         }
