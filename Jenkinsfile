@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("/var/lib/jenkins/workspace/spring-boot-pipeline-app") {
-                sh 'mvn -B -DskipTests clean package'
+                dir("/var/lib/jenkins/workspace/spring-boot-pipeline-app/my-app") {
+                    sh 'mvn -B -DskipTests clean package'
                 }
             }
         }
