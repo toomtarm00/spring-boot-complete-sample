@@ -1,11 +1,30 @@
 pipeline {
     agent any
+    tools {
+        maven "MAVEN"
+        jdk "JDK"
+    }
     stages {
-        stage ('Build') {
-            steps {
-                def mvnHome = tool name: 'Maven', type: 'maven'
-                sh "${mvnHome}/bin/mvn install"
+        stage('Initialize'){
+            steps{
+                echo "PATH = ${M2_HOME}/bin:${PATH}"
+                echo "M2_HOME = /opt/maven"
             }
         }
-    }
+        stage('Build') {
+            steps {
+                dir("/var/lib/jenkins/workspace/spring-boot-pipeline-app") {
+                sh 'mvn -B -DskipTests clean package'
+                }
+            }
+        }
+     }
+    post {
+       always {
+          junit(
+        allowEmptyResults: true,
+        testResults: '*/test-reports/.xml'
+      )
+      }
+   } 
 }
